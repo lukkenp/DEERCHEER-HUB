@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(cat:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "mcp__supabase-community-supabase-mcp__list_projects",
+      "Bash(supabase db push:*)",
+      "Bash(supabase link:*)",
+      "mcp__supabase-community-supabase-mcp__apply_migration",
+      "mcp__supabase-community-supabase-mcp__execute_sql",
+      "mcp__supabase-community-supabase-mcp__list_tables"
     ],
     "deny": [],
     "ask": []

@@ -1,193 +1,233 @@
-# Agents Especializados - DEERCHEER HUB
+# DEERCHEER HUB - Agentes Claude Especializados
 
-Este documento define os agentes especializados Claude para o desenvolvimento do projeto DEERCHEER HUB, uma plataforma de streaming com funcionalidades de sorteio de filmes e dashboard interativo.
+Guia prático para uso de agentes especializados no desenvolvimento do DEERCHEER HUB - plataforma de streaming com movie roulette interativo.
 
-## 🎨 Frontend & UI Agent (shadcn-ui-builder)
+## 🚀 Quick Start Guide
 
-**Especialização:** Desenvolvimento de interface usando shadcn/ui e React
+### Para Features Novas:
+```
+1. Use brainstorm template → Product Manager Agent
+2. Stories criadas → System Architect Agent  
+3. Plano técnico → Agentes especializados
+```
 
-**Responsabilidades:**
-- Criar e aprimorar componentes da UI usando shadcn/ui
-- Implementar layouts responsivos com Tailwind CSS
-- Desenvolver animações e transições com tema gaming
-- Otimizar componentes para streaming dashboard
-- Implementar padrões de design consistentes
-
-**Contexto do Projeto:**
-- Tema gaming com cores personalizadas (purple, blue, cyan, pink)
-- Sistema de design baseado em CSS variables
-- Componentes com efeitos neon e glow
-- Interface otimizada para streamers
-
-**Ferramentas Principais:**
-- shadcn/ui components
-- Tailwind CSS com configuração customizada
-- Lucide React icons
-- React Hook Form para formulários
-
----
-
-## ⚡ Streaming Features Agent
-
-**Especialização:** Funcionalidades específicas de streaming e interatividade
-
-**Responsabilidades:**
-- Desenvolver sistema de roleta de filmes
-- Implementar dashboard de streaming com painel lateral
-- Criar overlays para OBS Studio
-- Desenvolver hotkeys e atalhos de teclado
-- Implementar funcionalidades em tempo real
-
-**Funcionalidades Atuais:**
-- MovieRoulette: Sistema de sorteio de filmes
-- StreamingDashboard: Interface principal do streamer
-- OverlayRoulette: Página para integração com OBS
-- Modo Studio com atalhos de teclado
-- Painel colapsável com tabs (Roleta, Histórico, Chat)
-
-**Tecnologias:**
-- React hooks para estado local
-- LocalStorage para persistência
-- React Resizable Panels
-- Integração com clipboard API
-
----
-
-## 🔐 Authentication & Security Agent
-
-**Especialização:** Autenticação e segurança com Supabase
-
-**Responsabilidades:**
-- Gerenciar autenticação de usuários
-- Implementar controle de acesso às rotas
-- Configurar políticas de segurança do Supabase
-- Otimizar fluxos de login/logout
-- Implementar proteção de rotas
-
-**Sistema Atual:**
-- useAuth hook com React Context
-- Autenticação via Supabase Auth
-- Persistência de sessão em localStorage
-- Redirecionamento automático para login
-- Proteção de rotas do dashboard
-
-**Considerações:**
-- Database schema ainda não definido (types.ts vazio)
-- Apenas autenticação implementada, sem dados persistentes
-- Potencial para implementar perfis de usuário
-
----
-
-## 🛠️ Backend & Database Agent
-
-**Especialização:** API, banco de dados e integração Supabase
-
-**Necessidade Identificada:** ALTA PRIORIDADE
-
-**Justificativa:**
-- Atualmente o projeto usa apenas Supabase Auth
-- Database schema vazio (sem tabelas definidas)
-- Funcionalidades como histórico de filmes precisam de persistência
-- Chat da comunidade requer backend em tempo real
-- Sistema de votação precisa de APIs
-
-**Responsabilidades Sugeridas:**
-- Projetar e implementar schema do banco Supabase
-- Criar APIs para persistência de filmes e histórico
-- Implementar sistema de votação em tempo real
-- Desenvolver funcionalidades de chat/comunidade
-- Criar endpoints para dados de streaming
-- Configurar Row Level Security (RLS)
-
-**Tabelas Necessárias:**
-```sql
--- Sugestão de schema inicial
-- movies: armazenar filmes para sorteio
-- movie_sessions: histórico de sorteios
-- users_movies: filmes favoritos por usuário
-- voting_sessions: sessões de votação ativas
-- chat_messages: mensagens do chat (futuro)
+### Para Correções/Melhorias:
+```
+1. System Architect Agent (análise de impacto)
+2. Agente especializado apropriado
 ```
 
 ---
 
-## 📱 Mobile & PWA Agent
+## 🎯 AGENTES ORQUESTRADORES
 
-**Especialização:** Otimização mobile e Progressive Web App
+### 📋 Product Manager Agent
 
-**Justificativa:**
-- Dashboard pode ser usado em dispositivos móveis
-- Viewers podem participar via mobile
-- PWA permitiria notificações push
+**Use quando:** Tiver ideias/brainstorms para novas features ou mudanças significativas.
+
+**O que faz:**
+- Converte brainstorms em user stories estruturadas
+- Define critérios de aceitação testáveis
+- Prioriza por valor vs complexidade
+- Cria roadmap de desenvolvimento
+
+**Como usar:**
+1. Use template `docs/templates/brainstorm.md` OU input direto
+2. Agent cria `stories.md` estruturado
+3. Passe para System Architect Agent
+
+**Template de output:**
+```markdown
+## FEATURE: Nome da Feature
+
+### User Stories:
+- Como [streamer/viewer], eu quero [funcionalidade] para que [benefício]
+
+### Acceptance Criteria:
+- [ ] Critério específico e testável
+- [ ] Critério específico e testável
+
+### Priority: Alta/Média/Baixa
+### Complexity: 1-5 pontos
+### Dependencies: [lista]
+```
+
+---
+
+### 🏗️ System Architect Agent
+
+**Use quando:** Tiver user stories prontas e precisar de plano técnico para implementação.
+
+**O que faz:**
+- Analisa impacto arquitetural das features
+- Define schema de banco e APIs necessárias
+- Coordena trabalho entre agentes especializados
+- Cria plano de implementação detalhado
+
+**Como usar:**
+1. Input: stories.md do Product Manager Agent
+2. Agent cria `architecture-plan.md` detalhado
+3. Distribui tasks para agentes especializados
+
+**Template de output:**
+```markdown
+## Architecture Plan: [Feature Name]
+
+### Database Changes:
+- Tabelas: [lista]
+- APIs: [endpoints necessários]
+- Real-time: [subscriptions WebSocket]
+
+### Agent Assignment:
+1. Backend Agent: [tasks específicas]
+2. Frontend Agent: [tasks específicas]
+3. Streaming Agent: [tasks específicas]
+
+### Integration Plan:
+- Dependencies: [ordem de implementação]
+- Testing: [estratégia de testes]
+```
+
+---
+
+## 🛠️ AGENTES ESPECIALIZADOS
+
+### 🛠️ Backend & Database Agent **[PRIORIDADE CRÍTICA]**
+
+**Use quando:** Implementar/modificar banco de dados, APIs, real-time features.
+
+**Status atual:** Database schema VAZIO - bloqueia features principais.
+
+**Tasks críticas:**
+- Implementar schema Supabase (profiles, movies, sessions, votes, chat)
+- Criar APIs RESTful para todas funcionalidades
+- Configurar Supabase Real-time para chat/voting
+- Implementar Row Level Security (RLS)
+
+**Schema essencial:**
+```sql
+-- Ver template completo em architecture-plan.md
+CREATE TABLE profiles (id, username, role, etc)
+CREATE TABLE movies (id, title, votes, etc)
+CREATE TABLE movie_sessions (id, streamer_id, etc)
+CREATE TABLE voting_sessions (id, status, etc)
+```
+
+---
+
+### 🎨 Frontend & UI Agent (shadcn-ui-builder)
+
+**Use quando:** Criar/modificar componentes visuais, layouts, animações gaming.
+
+**Especialização:**
+- Componentes shadcn/ui com tema gaming customizado
+- Layouts responsivos para streaming dashboard
+- Overlays transparentes para OBS
+- Animações e micro-interações
+
+**Tecnologias:** shadcn/ui + Tailwind + gaming theme (--gaming-purple, --gaming-blue, etc)
+
+**Padrões:** CSS variables, neon/glow effects, modo escuro nativo
+
+---
+
+### ⚡ Streaming Features Agent
+
+**Use quando:** Implementar funcionalidades específicas de streaming, dashboard interativo, overlays OBS.
+
+**Funcionalidades atuais:** MovieRoulette, StreamingDashboard, OverlayRoulette, hotkeys
 
 **Responsabilidades:**
-- Otimizar interface para dispositivos móveis
-- Implementar funcionalidades PWA
-- Criar versão mobile do dashboard
-- Otimizar performance em dispositivos menores
-- Implementar touch gestures
+- Sistema de sorteio de filmes
+- Dashboard com painéis redimensionáveis  
+- Integração OBS e overlays
+- Real-time voting e chat
+- Hotkeys e controles de streaming
+
+**Inclui:** OBS Integration (overlays múltiplos, WebSocket, controles remotos)
 
 ---
 
-## 🎥 OBS Integration Agent
+### 🔐 Authentication & Security Agent
 
-**Especialização:** Integração com software de streaming
+**Use quando:** Implementar auth, segurança, controle de acesso, perfis de usuário.
 
-**Funcionalidades Atuais:**
-- URL de overlay para OBS (`/overlay/roulette`)
-- Cópia automática de URL do overlay
+**Status atual:** Supabase Auth implementado, falta perfis e roles
 
-**Responsabilidades Futuras:**
-- Criar múltiplos tipos de overlays
-- Implementar WebSocket para updates em tempo real
-- Desenvolver controles remotos para OBS
-- Criar templates de overlay customizáveis
-- Integração com APIs do OBS Studio
+**Oportunidades:**
+- Implementar perfis de usuário completos
+- Sistema de roles (streamer/viewer/moderator)
+- Autenticação social (Discord, Twitch)
+- Sistema de moderação e bans
 
 ---
 
-## 🚀 DevOps & Performance Agent
+## 🔧 AGENTES OPCIONAIS
 
-**Especialização:** Deploy, performance e otimização
+### 📱 Mobile & PWA Agent
+**Use quando:** Otimização mobile, PWA features, touch interfaces
+**Pode ser integrado:** Frontend & UI Agent para projetos menores
 
-**Responsabilidades:**
-- Otimizar build e bundle size
-- Configurar deploy automatizado
-- Implementar monitoramento de performance
-- Otimizar loading e lazy loading
-- Configurar CDN e cache strategies
-
-**Contexto Atual:**
-- Projeto Vite com build otimizado
-- Deploy via Lovable (mencionado no README)
-- Bundle splitting potencial com dynamic imports
+### 🚀 DevOps & Performance Agent  
+**Use quando:** Otimização performance, deploy, monitoring
+**Use conforme necessário:** Não essencial para desenvolvimento inicial
 
 ---
 
-## Recomendações de Implementação
+## ✅ ORDEM DE PRIORIDADE
 
-### Prioridade 1 (Crítica):
+### Fase 1 - Crítica (Desbloqueio):
 1. **Backend & Database Agent** - Implementar schema e APIs
-2. **shadcn-ui-builder Agent** - Continuar desenvolvimento da UI
+2. **Product Manager Agent** - Para features pendentes
+3. **System Architect Agent** - Para coordenação
 
-### Prioridade 2 (Alta):
-3. **Streaming Features Agent** - Expandir funcionalidades existentes
-4. **Authentication & Security Agent** - Implementar perfis de usuário
+### Fase 2 - Core Features:
+4. **Frontend & UI Agent** - Melhorar interfaces
+5. **Streaming Features Agent** - Expandir funcionalidades
+6. **Authentication & Security Agent** - Perfis completos
 
-### Prioridade 3 (Média):
-5. **OBS Integration Agent** - Melhorar integração com streaming
-6. **Mobile & PWA Agent** - Otimização mobile
-
-### Prioridade 4 (Baixa):
-7. **DevOps & Performance Agent** - Otimizações avançadas
+### Fase 3 - Enhancements:
+7. **Mobile & PWA Agent** - Experiência mobile
+8. **DevOps & Performance Agent** - Otimizações
 
 ---
 
-## Coordenação Entre Agents
+## 📋 CHECKLIST DE USO
 
-- **Frontend + Backend**: Trabalhar em paralelo nas APIs e interfaces
-- **Streaming + OBS**: Coordenar overlays e funcionalidades ao vivo
-- **Auth + Backend**: Integrar autenticação com dados do usuário
-- **Mobile + UI**: Otimizar componentes para responsividade
+### Antes de usar qualquer agent:
+- [ ] Problema/objetivo está claro?
+- [ ] É uma feature nova (usar orquestradores) ou melhoria (direto ao especializado)?
+- [ ] Dependências identificadas?
 
-Cada agent deve manter consistência com o CLAUDE.md principal e seguir os padrões estabelecidos no projeto.
+### Para features novas:
+- [ ] Brainstorm completo (use template)
+- [ ] Product Manager Agent → stories.md
+- [ ] System Architect Agent → architecture-plan.md
+- [ ] Agentes especializados conforme plano
+
+### Para melhorias/correções:
+- [ ] System Architect Agent (análise de impacto)
+- [ ] Agente especializado apropriado
+- [ ] Validação final
+
+---
+
+## 🎯 TEMPLATES DISPONÍVEIS
+
+Todos em `docs/templates/`:
+- `brainstorm.md` - Input para Product Manager Agent
+- `stories.md` - Output do Product Manager Agent  
+- `architecture-plan.md` - Output do System Architect Agent
+- `README.md` - Guia completo dos templates
+
+---
+
+## ⚡ CONTEXTO DO PROJETO
+
+**Stack:** React 18 + TypeScript + Vite + Tailwind + shadcn/ui + Supabase
+**Tema:** Gaming (cores neon, efeitos glow, modo escuro)
+**Usuários:** Streamers (controle) + Viewers (participação)
+**Integrações:** OBS Studio, plataformas de streaming
+**Real-time:** WebSocket para chat, voting, updates
+
+**Limitação atual:** Database schema vazio - usar Backend Agent primeiro!
