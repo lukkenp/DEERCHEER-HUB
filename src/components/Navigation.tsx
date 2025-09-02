@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Gamepad2, Users, Film, History } from "lucide-react";
+import { Link } from "react-router-dom";
 import streamerLogo from "@/assets/streamer-hub-logo.jpg";
 
 const Navigation = () => {
@@ -15,30 +16,38 @@ const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <Button variant="ghost" className="gap-2">
-            <Gamepad2 className="w-4 h-4" />
-            Live Stream
+          <Button variant="ghost" className="gap-2" asChild>
+            <Link to="/dashboard">
+              <Gamepad2 className="w-4 h-4" />
+              Live Stream
+            </Link>
           </Button>
-          <Button variant="ghost" className="gap-2">
-            <Film className="w-4 h-4" />
-            Movie Roulette
+          <Button variant="ghost" className="gap-2" asChild>
+            <Link to="/dashboard">
+              <Film className="w-4 h-4" />
+              Movie Roulette
+            </Link>
           </Button>
-          <Button variant="ghost" className="gap-2">
-            <History className="w-4 h-4" />
-            History
+          <Button variant="ghost" className="gap-2" asChild>
+            <Link to="/dashboard">
+              <History className="w-4 h-4" />
+              History
+            </Link>
           </Button>
-          <Button variant="ghost" className="gap-2">
-            <Users className="w-4 h-4" />
-            Community
+          <Button variant="ghost" className="gap-2" asChild>
+            <Link to="/dashboard">
+              <Users className="w-4 h-4" />
+              Community
+            </Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-3">
           <Button variant="outline" className="hidden sm:flex" asChild>
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           </Button>
           <Button className="bg-gradient-primary hover:shadow-glow transition-all" asChild>
-            <a href="/login">Entrar no Hub</a>
+            <Link to="/login">Entrar no Hub</Link>
           </Button>
         </div>
       </div>
